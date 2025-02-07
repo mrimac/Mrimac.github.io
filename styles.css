@@ -1,0 +1,24 @@
+body {
+    font-family: 'bnazanin', sans-serif;
+    background-color: #f4f4f4;
+}
+
+.hero {
+    background: url('fitness-bg.jpg') center/cover no-repeat;
+    padding: 150px 0;
+}
+
+.hero .btn {
+    background-color: #ff6f61;
+    border: none;
+    font-size: 20px;
+    padding: 15px 30px;
+}
+
+.hero .btn:hover {
+    background-color: #e74c3c;
+}
+
+h2 {
+    color: #ff5733;
+}
