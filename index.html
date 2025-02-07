@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <link rel="manifest" href="manifest.json">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> جوان فیت برنامه ورزشی آنلاین</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- نوار ناوبری -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">🏋️ برنامه ورزشی</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">صفحه اصلی</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#workout">برنامه تمرینی</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#nutrition">برنامه تغذیه</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">تماس با ما</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- صفحه اصلی -->
+    <header id="home" class="hero">
+        <div class="container text-center text-white">
+            <h1>بهترین برنامه ورزشی آنلاین</h1>
+            <p>ورزش و تغذیه سالم، رمز سلامتی شما!</p>
+            <button class="btn btn-warning">مشاهده برنامه‌ها</button>
+        </div>
+    </header>
+
+    <!-- تبلیغات -->
+    <section class="ads container my-4 text-center">
+        <img src="ad-banner.jpg" alt="تبلیغات" class="img-fluid">
+    </section>
+
+    <!-- برنامه تمرینی -->
+    <section id="workout" class="container my-5">
+        <h2 class="text-center">💪 برنامه تمرینی</h2>
+        <p class="text-center">برنامه‌های متنوع برای تناسب اندام شما</p>
+        <div class="row">
+            <div class="col-md-4">
+                <h4>برنامه افزایش حجم</h4>
+                <p>تمرینات قدرتی برای حجم‌دهی عضلات</p>
+            </div>
+            <div class="col-md-4">
+                <h4>برنامه چربی‌سوزی</h4>
+                <p>تمرینات هوازی و فشرده برای کاهش وزن</p>
+            </div>
+            <div class="col-md-4">
+                <h4>برنامه استقامتی</h4>
+                <p>افزایش قدرت بدنی و عملکرد بهتر</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- برنامه تغذیه -->
+    <section id="nutrition" class="container my-5">
+        <h2 class="text-center">🥗 برنامه تغذیه</h2>
+        <p class="text-center">رژیم‌های متنوع برای بهبود عملکرد ورزشی</p>
+        <ul>
+            <li>برنامه غذایی برای افزایش وزن</li>
+            <li>برنامه غذایی برای کاهش وزن</li>
+            <li>رژیم مخصوص ورزشکاران</li>
+        </ul>
+    </section>
+
+    <!-- تماس با ما -->
+    <section id="contact" class="container my-5">
+        <h2 class="text-center">📞 تماس با ما</h2>
+        <form>
+            <div class="mb-3">
+                <label for="name" class="form-label">نام و نام خانوادگی</label>
+                <input type="text" class="form-control" id="name" placeholder="نام خود را وارد کنید">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">ایمیل</label>
+                <input type="email" class="form-control" id="email" placeholder="ایمیل خود را وارد کنید">
+            </div>
+            <div class="mb-3">
+                <label for="message" class="form-label">پیام</label>
+                <textarea class="form-control" id="message" rows="4" placeholder="جوان فیت همیشه در کنار جوانان"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">ارسال</button>
+        </form>
+    </section>
+
+    <!-- فوتر -->
+    <footer class="text-center py-3 bg-light">
+        <p>© 2025 برنامه ورزشی | تمامی حقوق محفوظ است</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
