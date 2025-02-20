@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎙️ ضبط‌کننده حرفه‌ای صدا و ویدیو</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="recorder-container">
+        <h1>🎙️ ضبط‌کننده صدا</h1>
+        
+        <button id="startRecord">🔴 ضبط</button>
+        <button id="stopRecord" disabled>⏹️ توقف</button>
+        
+        <h2>📂 ضبط‌های شما:</h2>
+        <ul id="recordingsList"></ul>
+
+        <!-- پخش‌کننده صوتی -->
+        <h3>🎶 پخش‌کننده صوتی:</h3>
+        <input type="file" id="audioFile" accept="audio/*" />
+        <audio id="audioPlayer" controls></audio>
+
+        <!-- پخش‌کننده ویدیویی -->
+        <h3>📺 پخش‌کننده ویدیو:</h3>
+        <input type="text" id="videoURL" placeholder="لینک ویدیو را وارد کنید" />
+        <button id="playVideoBtn">پخش ویدیو</button>
+        <video id="videoPlayer" controls width="100%" style="display:none;"></video>
+        <button id="fullscreenBtn">فول‌اسکرین</button>
+        <button id="skipForwardBtn">جلو به جلو (3 دقیقه)</button>
+        <button id="skipBackwardBtn">عقب به عقب (3 دقیقه)</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
