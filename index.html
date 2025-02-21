@@ -3,32 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎙️ ضبط‌کننده حرفه‌ای صدا و ویدیو</title>
+    <title>Mr Trader Tools</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="recorder-container">
-        <h1>🎙️ ضبط‌ کننده صدا Mr Trader 👨‍💻💹</h1>
+    <div class="container">
+        <h1>Mr Trader Tools</h1>
         
-        <button id="startRecord">🔴 ضبط</button>
-        <button id="stopRecord" disabled>⏹️ توقف</button>
-        
-        <h2>📂 ضبط‌ های شما:</h2>
-        <ul id="recordingsList"></ul>
+        <div class="clock">
+            <h2 class="time" id="localTime"></h2>
+            <h2 class="time" id="newYorkTime"></h2>
+        </div>
 
-        <!-- پخش‌کننده صوتی -->
-        <h3>🎶 پخش‌ کننده صوتی:</h3>
-        <input type="file" id="audioFile" accept="audio/*" />
-        <audio id="audioPlayer" controls></audio>
+        <!-- قسمت To-Do List -->
+        <div class="todo-list">
+            <h3>To-Do List</h3>
+            <input type="text" id="todoInput" placeholder="کارهای خود را بنویسید">
+            <button id="addTodo">اضافه کردن</button>
+            <ul id="todoItems"></ul>
+        </div>
 
-        <!-- پخش‌کننده ویدیویی -->
-        <h3> 📺 پخش‌ کننده ویدیو:</h3>
-        <input type="text" id="videoURL" placeholder="لینک ویدیو را وارد کنید" />
-        <button id="playVideoBtn">پخش ویدیو</button>
-        <video id="videoPlayer" controls width="100%" style="display:none;"></video>
-        <button id="fullscreenBtn">فول‌اسکرین</button>
-        <button id="skipForwardBtn">جلو به جلو (3 دقیقه)</button>
-        <button id="skipBackwardBtn">عقب به عقب (3 دقیقه)</button>
+        <div class="recorder">
+            <h3>ضبط صدا</h3>
+            <button id="recordBtn">ضبط</button>
+            <button id="stopBtn" disabled>توقف</button>
+            <button id="playBtn" disabled>پخش</button>
+            <button id="deleteBtn" disabled>حذف</button>
+            <a id="downloadBtn" style="display: none;">دانلود</a>
+            <audio id="audioPlayback" controls></audio>
+        </div>
+
+        <div class="music-player">
+            <h3>پلیر موسیقی</h3>
+            <input type="file" id="musicFile" accept="audio/*">
+            <audio id="musicPlayback" controls></audio>
+        </div>
+
+        <div class="video-player">
+            <h3>ویدیو پلیر</h3>
+            <input type="text" id="videoUrl" placeholder="آدرس ویدیو">
+            <button id="loadVideo">بارگذاری ویدیو</button>
+            <button id="playBack">پخش عقب</button>
+            <button id="playForward">پخش جلو</button>
+            <button id="fullScreen">فول اسکرین</button>
+            <iframe id="videoPlayback" width="560" height="315" frameborder="0"></iframe>
+        </div>
+
+        <div class="market-info">
+            <h3>قیمت ارز داوجونز و انس جهانی</h3>
+            <div id="marketPrices"></div>
+            <h3>تایمر زنگ</h3>
+            <input type="time" id="alarmTime">
+            <button id="setAlarm">تنظیم زنگ</button>
+            <button id="clearAlarm">حذف تایمر</button>
+            <div id="alarmStatus"></div>
+        </div>
     </div>
 
     <script src="script.js"></script>
