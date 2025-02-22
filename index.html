@@ -3,62 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mr Trader Tools</title>
+    <title>Mr Trader Tools 👨‍💻💲💹</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Mr Trader Tools</h1>
-        
-        <div class="clock">
-            <h2 class="time" id="localTime"></h2>
-            <h2 class="time" id="newYorkTime"></h2>
-        </div>
+    <header>
+        <h1>Mr Trader Tools 👨‍💻💲💹</h1>
+    </header>
+    <main class="container">
+        <section class="clock">
+            <h2>ساعت محلی: <span id="localTime" class="time neon"></span></h2>
+            <h2>ساعت نیویورک: <span id="newYorkTime" class="time neon"></span></h2>
 
-        <!-- قسمت To-Do List -->
-        <div class="todo-list">
-            <h3>To-Do List</h3>
-            <input type="text" id="todoInput" placeholder="کارهای خود را بنویسید">
+
+        <section class="todo-list">
+            <h3>لیست کارها</h3>
+            <input type="text" id="todoInput" placeholder="کار جدید...">
             <button id="addTodo">اضافه کردن</button>
             <ul id="todoItems"></ul>
-        </div>
+        </section>
 
-        <div class="recorder">
+        <section class="notification">
+            <h3>تنظیم نوتیفیکیشن</h3>
+            <input type="text" id="notificationText" placeholder="متن یادآوری...">
+            <input type="datetime-local" id="notificationTime">
+            <button id="setNotification">تنظیم یادآوری</button>
+        </section>
+
+        <section class="recorder">
             <h3>ضبط صدا</h3>
             <button id="recordBtn">ضبط</button>
             <button id="stopBtn" disabled>توقف</button>
             <button id="playBtn" disabled>پخش</button>
             <button id="deleteBtn" disabled>حذف</button>
-            <a id="downloadBtn" style="display: none;">دانلود</a>
             <audio id="audioPlayback" controls></audio>
-        </div>
+            <a id="downloadBtn" style="display:none;">دانلود</a>
+        </section>
 
-        <div class="music-player">
-            <h3>پلیر موسیقی</h3>
+        <section class="music-player">
+            <h3>پخش موسیقی</h3>
             <input type="file" id="musicFile" accept="audio/*">
             <audio id="musicPlayback" controls></audio>
-        </div>
+        </section>
 
-        <div class="video-player">
+        <section class="video-player">
             <h3>ویدیو پلیر</h3>
-            <input type="text" id="videoUrl" placeholder="آدرس ویدیو">
+            <input type="text" id="videoUrl" placeholder="آدرس ویدیو...">
             <button id="loadVideo">بارگذاری ویدیو</button>
-            <button id="playBack">پخش عقب</button>
-            <button id="playForward">پخش جلو</button>
+            <video id="videoPlayback" controls></video>
+            <button id="playBack">بازیابی 1 دقیقه</button>
+            <button id="playForward">پیشروی 1 دقیقه</button>
             <button id="fullScreen">فول اسکرین</button>
-            <video id="videoPlayback" width="560" height="315" controls></video>
-        </div>
+        </section>
 
-        <div class="market-info">
-            <h3>قیمت ارز داوجونز و انس جهانی</h3>
-            <div id="marketPrices"></div>
-            <h3>تایمر زنگ</h3>
-            <input type="time" id="alarmTime">
-            <button id="setAlarm">تنظیم زنگ</button>
-            <button id="clearAlarm">حذف تایمر</button>
-            <div id="alarmStatus"></div>
+        <section class="multi-timer">
+            <h3>تنظیم چندین تایمر</h3>
+            <input type="time" id="timerInput">
+            <button id="setTimer">تنظیم تایمر</button>
+            <ul id="timerList"></ul>
+        </section>
+
+        <section class="calendar">
+            <h3>تقویم</h3>
+            <input type="date" id="calendarDate">
+            <button id="showDate">نمایش تاریخ</button>
+            <p id="selectedDate"></p>
+        </section>
+    </main>
+    <footer class="contact-section">
+        <h2>تماس با ما</h2>
+        <div class="socials">
+            <a href="#">اینستاگرام</a>
+            <a href="#">تلگرام</a>
+            <a href="#">توییتر</a>
         </div>
-    </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
