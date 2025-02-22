@@ -3,83 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mr Trader Tools 👨‍💻💲💹</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Mr Trader Tools 👨‍💻💹</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
+    <div class="container">
         <h1>Mr Trader Tools 👨‍💻💲💹</h1>
-    </header>
-    <main class="container">
-        <section class="clock">
-            <h2>ساعت محلی: <span id="localTime" class="time neon"></span></h2>
-            <h2>ساعت نیویورک: <span id="newYorkTime" class="time neon"></span></h2>
+        
+        <div class="clock">
+            <h2 class="time neon" id="localTime"></h2>
+            <span>IRAN</span>
+            <h2 class="time neon" id="newYorkTime"></h2>
+            <span>New York</span>
+        </div>
 
+        <!-- قسمت ویجت آب و هوا -->
+        
 
-        <section class="todo-list">
-            <h3>لیست کارها</h3>
-            <input type="text" id="todoInput" placeholder="کار جدید...">
+        <!-- قسمت To-Do List -->
+        <div class="todo-list">
+            <h3>To-Do List 📝</h3>
+            <input type="text" id="todoInput" placeholder="کارهای مهم خود را بنویسید">
             <button id="addTodo">اضافه کردن</button>
             <ul id="todoItems"></ul>
-        </section>
+        </div>
 
-        <section class="notification">
-            <h3>تنظیم نوتیفیکیشن</h3>
-            <input type="text" id="notificationText" placeholder="متن یادآوری...">
+        <!-- قسمت نوتیفیکیشن -->
+        <div class="notification">
+            <h3>یادآوری نوتیفیکیشن 📌</h3>
+            <input type="text" id="notificationText" placeholder="متن یادآوری">
             <input type="datetime-local" id="notificationTime">
             <button id="setNotification">تنظیم یادآوری</button>
-        </section>
+        </div>
 
-        <section class="recorder">
-            <h3>ضبط صدا</h3>
+        <div class="recorder">
+            <h3>ضبط صدا 🎙️</h3>
             <button id="recordBtn">ضبط</button>
             <button id="stopBtn" disabled>توقف</button>
             <button id="playBtn" disabled>پخش</button>
             <button id="deleteBtn" disabled>حذف</button>
+            <a id="downloadBtn" style="display: none;">دانلود</a>
             <audio id="audioPlayback" controls></audio>
-            <a id="downloadBtn" style="display:none;">دانلود</a>
-        </section>
+        </div>
 
-        <section class="music-player">
-            <h3>پخش موسیقی</h3>
+        <div class="music-player">
+            <h3>پلیر موسیقی 🎧</h3>
             <input type="file" id="musicFile" accept="audio/*">
             <audio id="musicPlayback" controls></audio>
-        </section>
+        </div>
 
-        <section class="video-player">
-            <h3>ویدیو پلیر</h3>
-            <input type="text" id="videoUrl" placeholder="آدرس ویدیو...">
+        <div class="video-player">
+            <h3>ویدیو پلیر 📽️</h3>
+            <input type="text" id="videoUrl" placeholder="آدرس ویدیو">
             <button id="loadVideo">بارگذاری ویدیو</button>
-            <video id="videoPlayback" controls></video>
-            <button id="playBack">بازیابی 1 دقیقه</button>
-            <button id="playForward">پیشروی 1 دقیقه</button>
+            <button id="playBack">پخش عقب</button>
+            <button id="playForward">پخش جلو</button>
             <button id="fullScreen">فول اسکرین</button>
-        </section>
+            <video id="videoPlayback" width="320" height="280" controls></video>
+        </div>
 
-        <section class="multi-timer">
-            <h3>تنظیم چندین تایمر</h3>
+        
+
+        <!-- قسمت مدیریت چندین تایمر -->
+        <div class="multi-timer">
+            <h3>هشدار ⏰</h3>
             <input type="time" id="timerInput">
             <button id="setTimer">تنظیم تایمر</button>
             <ul id="timerList"></ul>
-        </section>
+        </div>
 
-        <section class="calendar">
-            <h3>تقویم</h3>
+        <!-- قسمت تقویم -->
+        <div class="calendar">
+            <h3>تقویم 📆</h3>
             <input type="date" id="calendarDate">
             <button id="showDate">نمایش تاریخ</button>
-            <p id="selectedDate"></p>
-        </section>
-    </main>
-    <footer class="contact-section">
-        <h2>تماس با ما</h2>
-        <div class="socials">
-            <a href="#">اینستاگرام</a>
-            <a href="#">تلگرام</a>
-            <a href="#">توییتر</a>
+            <div id="selectedDate"></div>
         </div>
-    </footer>
+
+        <!-- تگ صوتی برای زنگ -->
+        <audio id="alarmSound" src="alarm-sound.mp3"></audio>
+    </div>
+   
 
     <script src="script.js"></script>
+    
+    <div class="contact-section">
+    <h2>تماس با ما ☎️</h2>
+    <div class="socials">
+        <a href="mailto:mrimac121@gmail.com" target="_blank">ایمیل ما</a>
+        <a href="https://Instagram.com/apple" target="_blank">اینستاگرام</a>
+        <a href="https://www.mrimac.github.io" target="_blank">تلگرام</a>
+    </div>
+</div>
 </body>
 </html>
