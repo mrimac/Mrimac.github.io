@@ -10,10 +10,12 @@ function updateTime() {
 
 setInterval(updateTime, 1000);
 
-// قسمت To-Do List
-document.getElementById('addTodo').addEventListener('click', addTodo);
+// قسمت ویجت آب و هوا
 
-function addTodo() {
+
+
+// قسمت To-Do List
+document.getElementById('addTodo').addEventListener('click', () => {
     const todoInput = document.getElementById('todoInput');
     const todoText = todoInput.value.trim();
     
@@ -22,28 +24,20 @@ function addTodo() {
         const li = document.createElement('li');
         li.textContent = todoText;
 
-        const deleteBtn = createDeleteButton(li);
+        const deleteBtn = document.createElement('button');
+        deleteBtn.textContent = 'حذف';
+        deleteBtn.addEventListener('click', () => {
+            todoList.removeChild(li);
+        });
+
         li.appendChild(deleteBtn);
         todoList.appendChild(li);
         todoInput.value = ''; // پاک کردن ورودی بعد از اضافه کردن
-    } else {
-        alert('لطفاً یک کار وارد کنید.');
     }
-}
-
-function createDeleteButton(li) {
-    const deleteBtn = document.createElement('button');
-    deleteBtn.textContent = 'حذف';
-    deleteBtn.addEventListener('click', () => {
-        li.remove();
-    });
-    return deleteBtn;
-}
+});
 
 // تنظیم نوتیفیکیشن
-document.getElementById('setNotification').addEventListener('click', setNotification);
-
-function setNotification() {
+document.getElementById('setNotification').addEventListener('click', () => {
     const notificationText = document.getElementById('notificationText').value;
     const notificationTime = new Date(document.getElementById('notificationTime').value);
     
@@ -57,11 +51,12 @@ function setNotification() {
     } else {
         alert('زمان یادآوری باید در آینده باشد.');
     }
-}
+});
 
 // ضبط صدا
 let mediaRecorder;
 let audioChunks = [];
+let audioBlob;
 
 document.getElementById('recordBtn').addEventListener('click', async () => {
     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -83,15 +78,16 @@ document.getElementById('stopBtn').addEventListener('click', () => {
     document.getElementById('deleteBtn').disabled = false;
 
     mediaRecorder.addEventListener("stop", () => {
-        const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+        audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
         const audioUrl = URL.createObjectURL(audioBlob);
         document.getElementById('audioPlayback').src = audioUrl;
         
+        // تنظیم دکمه دانلود
         const downloadBtn = document.getElementById('downloadBtn');
         downloadBtn.href = audioUrl;
-        downloadBtn.download = 'recording.wav'; 
+        downloadBtn.download = 'recording.wav'; // نام فایل دانلود
         downloadBtn.innerText = 'دانلود';
-        downloadBtn.style.display = 'inline';
+        downloadBtn.style.display = 'inline'; // نمایش دکمه دانلود
         
         audioChunks = [];
     });
@@ -99,9 +95,10 @@ document.getElementById('stopBtn').addEventListener('click', () => {
 
 // دکمه پخش
 document.getElementById('playBtn').addEventListener('click', () => {
-    const audioPlayback = document.getElementById('audioPlayback');
-    if (audioPlayback.src) {
-        audioPlayback.play();
+    if (audioBlob) {
+        const audioUrl = URL.createObjectURL(audioBlob);
+        document.getElementById('audioPlayback').src = audioUrl;
+        document.getElementById('audioPlayback').play();
     }
 });
 
@@ -110,7 +107,8 @@ document.getElementById('deleteBtn').addEventListener('click', () => {
     document.getElementById('audioPlayback').src = '';
     document.getElementById('playBtn').disabled = true;
     document.getElementById('deleteBtn').disabled = true;
-    document.getElementById('downloadBtn').style.display = 'none';
+    document.getElementById('downloadBtn').style.display = 'none'; // پنهان کردن دکمه دانلود
+    audioBlob = null;
 });
 
 // پخش موزیک
@@ -120,36 +118,29 @@ document.getElementById('musicFile').addEventListener('change', (event) => {
         const url = URL.createObjectURL(file);
         document.getElementById('musicPlayback').src = url;
         document.getElementById('musicPlayback').play();
-    } else {
-        alert('لطفاً یک فایل معتبر انتخاب کنید.');
     }
 });
 
 // ویدیو پلیر
-document.getElementById('loadVideo').addEventListener('click', loadVideo);
-
-function loadVideo() {
-    const url = document.getElementById('videoUrl').value.trim();
-    if (!url) {
-        alert('لطفاً یک آدرس ویدیو معتبر وارد کنید.');
-        return;
-    }
-    
+document.getElementById('loadVideo').addEventListener('click', () => {
+    const url = document.getElementById('videoUrl').value;
     const video = document.getElementById('videoPlayback');
+    
+    // تنظیم منبع ویدیو
     video.src = url;
-    video.load(); 
-    video.play(); 
-}
+    video.load(); // بارگذاری ویدیو
+    video.play(); // پخش ویدیو
+});
 
 // دکمه‌های پخش جلو و عقب
 document.getElementById('playBack').addEventListener('click', () => {
     const video = document.getElementById('videoPlayback');
-    video.currentTime = Math.max(0, video.currentTime - 60); 
+    video.currentTime = Math.max(0, video.currentTime - 60); // 1 دقیقه عقب
 });
 
 document.getElementById('playForward').addEventListener('click', () => {
     const video = document.getElementById('videoPlayback');
-    video.currentTime = Math.min(video.duration, video.currentTime + 60); 
+    video.currentTime = Math.min(video.duration, video.currentTime + 60); // 1 دقیقه جلو
 });
 
 // دکمه فول اسکرین
@@ -157,19 +148,20 @@ document.getElementById('fullScreen').addEventListener('click', () => {
     const video = document.getElementById('videoPlayback');
     if (video.requestFullscreen) {
         video.requestFullscreen();
-    } else if (video.mozRequestFullScreen) {
+    } else if (video.mozRequestFullScreen) { // Firefox
         video.mozRequestFullScreen();
-    } else if (video.webkitRequestFullscreen) {
+    } else if (video.webkitRequestFullscreen) { // Chrome, Safari and Opera
         video.webkitRequestFullscreen();
-    } else if (video.msRequestFullscreen) {
+    } else if (video.msRequestFullscreen) { // IE/Edge
         video.msRequestFullscreen();
     }
 });
 
-// تنظیم چندین تایمر
-document.getElementById('setTimer').addEventListener('click', setTimer);
+// قیمت ارز داوجونز و انس جهانی
 
-function setTimer() {
+
+// تنظیم چندین تایمر
+document.getElementById('setTimer').addEventListener('click', () => {
     const timerInput = document.getElementById('timerInput').value;
     const timerList = document.getElementById('timerList');
     const li = document.createElement('li');
@@ -184,30 +176,26 @@ function setTimer() {
     if (timeToTimer >= 0) {
         const timeoutId = setTimeout(() => {
             alert(`تایمر ${timerInput} به پایان رسید!`);
-            const alarmSound = document.getElementById('alarmSound');
-            alarmSound.currentTime = 0;
-            alarmSound.play();
+            const alarmSound = document.getElementById('alarmSound'); // استفاده از تگ صوتی
+            alarmSound.currentTime = 0; // بازنشانی زمان به شروع
+            alarmSound.play(); // پخش صدا
             timerList.removeChild(li);
         }, timeToTimer);
 
-        const deleteBtn = createDeleteButton(li, timeoutId);
+        const deleteBtn = document.createElement('button');
+        deleteBtn.textContent = 'حذف';
+        deleteBtn.addEventListener('click', () => {
+            clearTimeout(timeoutId);
+            timerList.removeChild(li);
+        });
+
         li.appendChild(deleteBtn);
         timerList.appendChild(li);
     } else {
         alert('زمان تایمر باید در آینده باشد.');
+        return;
     }
-}
-
-// دکمه حذف برای تایمر
-function createDeleteButton(li, timeoutId) {
-    const deleteBtn = document.createElement('button');
-    deleteBtn.textContent = 'حذف';
-    deleteBtn.addEventListener('click', () => {
-        clearTimeout(timeoutId);
-        li.remove();
-    });
-    return deleteBtn;
-}
+});
 
 // نمایش تاریخ انتخاب شده
 document.getElementById('showDate').addEventListener('click', () => {
