@@ -103,7 +103,12 @@ document.getElementById('musicFile').addEventListener('change', (event) => {
 // ویدیو پلیر
 document.getElementById('loadVideo').addEventListener('click', () => {
     const url = document.getElementById('videoUrl').value;
-    document.getElementById('videoPlayback').src = url;
+    const video = document.getElementById('videoPlayback');
+    
+    // تنظیم منبع ویدیو
+    video.src = url;
+    video.load(); // بارگذاری ویدیو
+    video.play(); // پخش ویدیو
 });
 
 // دکمه‌های پخش جلو و عقب
